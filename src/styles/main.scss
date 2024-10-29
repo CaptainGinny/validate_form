@@ -1,0 +1,116 @@
+@use "sass:color";
+@use "sass:math";
+@use "./modal.scss";
+
+$primary-color: #34C759;
+$secondary-color: #FFB84D;
+$background-color: #f0f8ff;
+$form-background-color: #ffffff;
+$text-color: #333;
+$border-color: #e0e0e0;
+$focus-border-color: $secondary-color;
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px;
+  padding: 30px;
+  background-color: $form-background-color;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border: 2px solid $primary-color;
+}
+
+h1 {
+  text-align: center;
+  color: $primary-color;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: $text-color;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 96%;;
+  padding: 12px;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: $focus-border-color;
+  outline: none;
+  box-shadow: 0 0 5px color.scale($focus-border-color, $lightness: -20%);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background-color: $secondary-color;
+  box-shadow: 0 4px 20px color.scale($secondary-color, $lightness: -30%);
+}
+
+button:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300%; 
+  height: 300%; 
+  background: rgba(255, 255, 255, 0.2); 
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s;
+}
+
+button:hover:after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.error {
+  border: 2px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
